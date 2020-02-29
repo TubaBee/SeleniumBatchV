@@ -1,10 +1,26 @@
 package com.class7;
 
-public class TestAlertFunction {
+import org.openqa.selenium.By;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+import com.utils.CommonMethods;
+
+public class TestAlertFunction extends CommonMethods {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		setUp("chrome", "http://jiravm.centralus.cloudapp.azure.com:8081/javascript-alert-box-demo.html");
+
+		driver.findElement(By.cssSelector("button[onclick='myConfirmFunction()']")).click();
+
+		String alertText = getAlertText();
+
+		System.out.println(alertText);
+
+		acceptAlert();
+
+		Thread.sleep(3000);
+
+		driver.quit();
 
 	}
-
 }
